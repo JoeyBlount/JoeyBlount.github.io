@@ -22,17 +22,23 @@ function mooify() {
   var text = textArea.value.toUpperCase();
 
   var sentences = text.split(".");
-  for (var i = 0; i < sentences.length - 1; i++) {
-    var words = sentences[i].trim().split(" ");
-    if (words.length > 0 && words[words.length - 1] !== "") {
-      words[words.length - 1] = words[words.length - 1] + "-Moo";
+  for (var i = 0; i < sentences.length; i++) {
+    if (sentences[i].trim() !== "") {
+      var words = sentences[i].trim().split(" ");
+      for (var j = 0; j < words.length; j++) {
+        if (words[j] !== "") {
+          words[j] = words[j] + "-Moo";
+        }
+      }
+      sentences[i] = words.join(" ");
     }
-    sentences[i] = words.join(" ");
   }
   text = sentences.join(".");
 
   textArea.value = text;
 }
+
+alert("Hello, world!");
 
 document.getElementById("biggerButton").onclick = makeBigger;
 document.getElementById("fancyShmancy").onchange = applyFancyShmancy;
